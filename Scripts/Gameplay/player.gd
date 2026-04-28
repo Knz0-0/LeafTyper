@@ -7,6 +7,7 @@ var gravity := 1600.0
 var is_airborne := false
 var ground_y := 650.0
 
+var landing_success := true
 var is_dead := false
 
 @onready var sprite = $Sprite
@@ -27,8 +28,8 @@ func _process(delta):
 			global_position.y = ground_y
 			velocity = Vector2.ZERO
 			is_airborne = false
-			play_land_animation()
 			landed.emit()
+			play_land_animation(landing_success)
 
 func dash_to(target_pos:Vector2):
 	var start_pos = global_position
@@ -60,10 +61,13 @@ func play_random_attack():
 	if is_airborne:
 		sprite.play("jump")
 
-func play_land_animation():
-	sprite.play("defend")
+func play_land_animation(success:bool):
+	if success:
+		sprite.play("defend")
+	else:
+		sprite.play("hurt")
 	await sprite.animation_finished
-	if not is_airborne:
+	if not is_airborne and not is_dead:
 		sprite.play("idle")
 		
 func play_death():

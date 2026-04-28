@@ -69,7 +69,7 @@ func handle_spawning():
 		spawn_leaf(letter, x_pos)
 
 		var diff = difficulty_level()
-		spawn_interval = lerp(2.5, 0.90, diff)
+		spawn_interval = lerp(2.5, 0.75, diff)
 
 func spawn_leaf(letter:String, x_pos:float):
 	var leaf = leaf_scene.instantiate()
@@ -77,8 +77,9 @@ func spawn_leaf(letter:String, x_pos:float):
 
 	leaf.global_position = Vector2(x_pos, -330)
 	leaf.set_letter(letter)
-
-	leaf.fall_speed = randi_range(75, 100)
+	var diff = difficulty_level()
+	leaf.fall_speed = lerp(75, 175, diff) * randf_range(0.8, 1.2)
+	# leaf.fall_speed = randi_range(75, 100)
 
 	leaf.reached_ground.connect(_on_leaf_ground.bind(leaf))
 
@@ -122,7 +123,7 @@ func cut_leaf(leaf):
 	pending_score += combo * 100
 	player.dash_to(leaf.global_position)
 	leaf.destroy_leaf()
-	spawn_score_popup(leaf.global_position, combo * 100)
+	# spawn_score_popup(leaf.global_position, combo * 100)
 	if combo >= 2:
 		spawn_score_popup(
 			leaf.global_position + Vector2(0, 28),
@@ -146,6 +147,11 @@ func fail_combo():
 func _on_player_landed():
 	if pending_score > 0:
 		GameManager.add_score(pending_score)
+		spawn_score_popup(
+			player.global_position + Vector2(0, -70),
+			pending_score
+		)
+	player.landing_success = pending_score > 0
 
 	combo = 0
 	pending_score = 0
