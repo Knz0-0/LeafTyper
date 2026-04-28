@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://cqfy73fyjo573"]
+
+[ext_resource type="Script" uid="uid://cvnye7d0up482" path="res://Scripts/Gameplay/game_controller.gd" id="1_cg2pt"]
+[ext_resource type="PackedScene" uid="uid://pw4lxehx6rar" path="res://Scenes/Gameplay/Player.tscn" id="2_ob1ve"]
+[ext_resource type="Texture2D" uid="uid://bhaw21ixf6i68" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/1.png" id="2_rtcwi"]
+[ext_resource type="Texture2D" uid="uid://dff1ueqlv7do0" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/2.png" id="3_vgtp8"]
+[ext_resource type="Texture2D" uid="uid://b52trqwr64ahh" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/3.png" id="4_dfiyb"]
+[ext_resource type="Texture2D" uid="uid://dm517esltjmvu" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/4.png" id="5_pokre"]
+[ext_resource type="Texture2D" uid="uid://d1wovs17xvacw" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/5.png" id="6_73bp4"]
+[ext_resource type="Texture2D" uid="uid://h5u2kjvf0pol" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/6.png" id="7_tsetf"]
+
+[node name="Game" type="Node2D" unique_id=559088453]
+script = ExtResource("1_cg2pt")
+
+[node name="StaticBG" type="CanvasLayer" parent="." unique_id=1196890183]
+layer = -20
+
+[node name="TextureRect" type="TextureRect" parent="StaticBG" unique_id=674942634]
+z_index = -100
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rtcwi")
+
+[node name="ParallaxBG" type="ParallaxBackground" parent="." unique_id=292355583]
+layer = -10
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBG" unique_id=303690932]
+visible = false
+texture_repeat = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer" unique_id=1953016908]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("2_rtcwi")
+
+[node name="SkyLayer2" type="ParallaxLayer" parent="ParallaxBG" unique_id=1112501456]
+texture_repeat = 2
+motion_scale = Vector2(0.15, 0.15)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer2" unique_id=1875812517]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("3_vgtp8")
+
+[node name="SkyLayer3" type="ParallaxLayer" parent="ParallaxBG" unique_id=26250309]
+texture_repeat = 2
+motion_scale = Vector2(0.35, 0.35)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer3" unique_id=305429054]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("4_dfiyb")
+
+[node name="SkyLayer4" type="ParallaxLayer" parent="ParallaxBG" unique_id=1883088216]
+texture_repeat = 2
+motion_scale = Vector2(0.6, 0.6)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer4" unique_id=484780851]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("5_pokre")
+
+[node name="SkyLayer5" type="ParallaxLayer" parent="ParallaxBG" unique_id=1268161062]
+texture_repeat = 2
+motion_scale = Vector2(0.95, 0.95)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer5" unique_id=1139269323]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("6_73bp4")
+
+[node name="SkyLayer6" type="ParallaxLayer" parent="ParallaxBG" unique_id=2069938882]
+texture_repeat = 2
+motion_scale = Vector2(1.2, 1.2)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer6" unique_id=1177524080]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("7_tsetf")
+
+[node name="Ground" type="ColorRect" parent="." unique_id=1072964103]
+offset_top = 650.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+
+[node name="LeafSpawner" type="Node" parent="." unique_id=899849520]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=24888717]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=423393116]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 85.0
+offset_bottom = 43.0
+text = "SCORE : 0"
+
+[node name="ComboLabel" type="Label" parent="UI" unique_id=1669349099]
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 103.0
+offset_bottom = 83.0
+text = "COMBO : 0"
+
+[node name="GameOverPanel" type="Panel" parent="UI" unique_id=402307186]
+visible = false
+offset_left = 430.0
+offset_top = 180.0
+offset_right = 850.0
+offset_bottom = 440.0
+
+[node name="Title" type="Label" parent="UI/GameOverPanel" unique_id=199504578]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 252.0
+offset_bottom = 55.0
+text = "GAME OVER"
+
+[node name="FinalScore" type="Label" parent="UI/GameOverPanel" unique_id=472440812]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 81.0
+offset_right = 238.0
+offset_bottom = 104.0
+text = "SCORE : 0"
+
+[node name="NameEdit" type="LineEdit" parent="UI/GameOverPanel" unique_id=230413965]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 107.0
+offset_right = 288.0
+offset_bottom = 138.0
+placeholder_text = "YOUR NAME"
+
+[node name="ValidateButton" type="Button" parent="UI/GameOverPanel" unique_id=1276034146]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 204.0
+offset_right = 258.0
+offset_bottom = 235.0
+text = "CONTINUE"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=993352982]
+position = Vector2(640, 360)
+
+[node name="Player" parent="." unique_id=971379593 instance=ExtResource("2_ob1ve")]
+position = Vector2(640, 620)

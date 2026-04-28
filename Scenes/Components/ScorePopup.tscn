@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ckfwjdfd34cwp"]
+
+[ext_resource type="Script" uid="uid://bqvknpu8lc07d" path="res://Scripts/UI/score_popup.gd" id="1_atclc"]
+
+[node name="ScorePopup" type="Label" unique_id=350171272]
+text = "+100"
+script = ExtResource("1_atclc")
