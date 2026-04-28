@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c3cbprgfs8dmr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8u2cj"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8u2cj"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 85.0
+initial_velocity_max = 95.0
+gravity = Vector3(0, 100, 0)
+scale_min = 8.0
+scale_max = 10.0
+color = Color(0.46929687, 0.4692964, 0.46929663, 1)
+
+[node name="LandingParticles" type="GPUParticles2D" unique_id=302798176]
+material = SubResource("CanvasItemMaterial_8u2cj")
+emitting = false
+amount = 16
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8u2cj")

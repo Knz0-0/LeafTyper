@@ -5,6 +5,7 @@ extends Node2D
 @onready var score_label = $UI/ScoreLabel
 @onready var combo_label = $UI/ComboLabel
 @onready var camera = $Camera2D
+@onready var death_fade = $UI/DeathFade
 
 @onready var game_over_panel = $UI/GameOverPanel
 @onready var final_score_label = $UI/GameOverPanel/FinalScore
@@ -121,9 +122,10 @@ func cut_leaf(leaf):
 	active_leaves.erase(leaf)
 	combo += 1
 	pending_score += combo * 100
+	var dash_dir = (leaf.global_position - player.global_position).normalized()
 	player.dash_to(leaf.global_position)
+	spawn_cut_particles(leaf.global_position, dash_dir)
 	leaf.destroy_leaf()
-	# spawn_score_popup(leaf.global_position, combo * 100)
 	if combo >= 2:
 		spawn_score_popup(
 			leaf.global_position + Vector2(0, 28),
@@ -145,6 +147,7 @@ func fail_combo():
 	update_ui()
 
 func _on_player_landed():
+	spawn_landing_particles(player.global_position)
 	if pending_score > 0:
 		GameManager.add_score(pending_score)
 		spawn_score_popup(
@@ -158,6 +161,9 @@ func _on_player_landed():
 	update_ui()
 
 func _on_leaf_ground(leaf):
+	if game_over:
+		return
+	game_over = true
 	active_leaves.erase(leaf)
 	player.play_death()
 	await player.sprite.animation_finished
@@ -169,6 +175,8 @@ func update_ui():
 	
 func trigger_game_over():
 	game_over = true
+	
+	await play_death_fade()
 
 	final_score_label.text = "Score: " + str(GameManager.current_score)
 	game_over_panel.visible = true
@@ -180,6 +188,17 @@ func trigger_game_over():
 		name_edit.visible = false
 		validate_button.text = "Back To Menu"
 		validate_button.visible = true
+
+func play_death_fade():
+	var duration = 0.8
+	var timer = 0.0
+
+	while timer < duration:
+		await get_tree().process_frame
+		timer += get_process_delta_time()
+
+		var t = timer / duration
+		death_fade.color.a = lerp(0.0, 0.72, t)
 
 func _on_validate_pressed():
 	if GameManager.is_highscore(GameManager.current_score):
@@ -234,3 +253,21 @@ func spawn_score_popup(pos:Vector2, value:int, is_combo := false):
 
 	popup.position = pos
 	popup.setup(value, is_combo)
+
+func spawn_cut_particles(pos:Vector2, dir:Vector2):
+	var p = preload("res://Scenes/Components/CutParticles.tscn").instantiate()
+
+	add_child(p)
+	p.global_position = pos
+
+	p.rotation = dir.angle()
+
+	p.emitting = true
+
+
+func spawn_landing_particles(pos:Vector2):
+	var p = preload("res://Scenes/Components/LandingParticles.tscn").instantiate()
+
+	add_child(p)
+	p.global_position = pos
+	p.emitting = true

@@ -57,7 +57,7 @@ shape = SubResource("RectangleShape2D_lxr6h")
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_8y07g")
-frame_progress = 0.7770273
+frame_progress = 0.25678077
 
 [node name="LetterLabel" type="Label" parent="." unique_id=1833684026]
 texture_filter = 1

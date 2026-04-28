@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dl440qji76mqo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wrfog"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wrfog"]
+lifetime_randomness = 0.15
+particle_flag_disable_z = true
+spread = 55.0
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 120, 0)
+scale_min = 4.0
+scale_max = 7.0
+color = Color(0.8161627, 0.6134882, 0.33022553, 1)
+
+[node name="CutParticles" type="GPUParticles2D" unique_id=1522922971]
+material = SubResource("CanvasItemMaterial_wrfog")
+emitting = false
+amount = 14
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wrfog")
