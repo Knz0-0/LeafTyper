@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d1wovs17xvacw" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/5.png" id="6_73bp4"]
 [ext_resource type="Texture2D" uid="uid://h5u2kjvf0pol" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/6.png" id="7_tsetf"]
 [ext_resource type="Script" uid="uid://camnrbylkjcff" path="res://Scripts/Utils/procedural_ground.gd" id="8_vgtp8"]
+[ext_resource type="PackedScene" uid="uid://bp00uqvs7nix7" path="res://Scenes/UI/TutorialHint.tscn" id="10_dfiyb"]
 
 [node name="Game" type="Node2D" unique_id=559088453]
 script = ExtResource("1_cg2pt")
@@ -112,6 +113,7 @@ offset_bottom = 720.0
 color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
 [node name="ProceduralGround" type="Node2D" parent="." unique_id=946352535]
+z_index = 1
 position = Vector2(0, 620)
 script = ExtResource("8_vgtp8")
 
@@ -234,3 +236,8 @@ position = Vector2(640, 360)
 
 [node name="Player" parent="." unique_id=971379593 instance=ExtResource("2_ob1ve")]
 position = Vector2(640, 620)
+
+[node name="TutorialCanvas" type="CanvasLayer" parent="." unique_id=993868896]
+layer = 10
+
+[node name="TutorialHint" parent="TutorialCanvas" unique_id=1425860380 instance=ExtResource("10_dfiyb")]

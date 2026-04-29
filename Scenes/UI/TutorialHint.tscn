@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bp00uqvs7nix7"]
+
+[ext_resource type="Script" uid="uid://dlu3h51ltv6w5" path="res://Scripts/UI/tutorial_hint.gd" id="1_rjr5r"]
+[ext_resource type="Texture2D" uid="uid://0u08l34xcup0" path="res://Assets/Tutorial/hint1.png" id="2_jcmaq"]
+
+[node name="TutorialHint" type="Control" unique_id=1425860380]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 100.0
+offset_right = 20.0
+offset_bottom = 140.0
+grow_horizontal = 2
+script = ExtResource("1_rjr5r")
+
+[node name="HintText" type="Label" parent="." unique_id=304566062]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "test"
+
+[node name="HintIcon" type="TextureRect" parent="." unique_id=357868887]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.99999
+offset_top = 49.0
+offset_right = -67.99999
+offset_bottom = 96.0
+grow_horizontal = 2
+scale = Vector2(5, 5)
+texture = ExtResource("2_jcmaq")
