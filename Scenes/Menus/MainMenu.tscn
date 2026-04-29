@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://do04rmms4h4ye" path="res://Scripts/UI/UIButton.gd" id="2_b42ut"]
 [ext_resource type="Texture2D" uid="uid://vv64bqytsstt" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 7/1.png" id="2_hqtmt"]
 [ext_resource type="Theme" uid="uid://lcbdvvqemx8r" path="res://Themes/default.tres" id="3_tfrft"]
+[ext_resource type="Texture2D" uid="uid://dud3a5nbhsth4" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/1.png" id="3_ts2fx"]
+[ext_resource type="Texture2D" uid="uid://di6rox6q8nr8i" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/2.png" id="4_8w8b8"]
+[ext_resource type="Texture2D" uid="uid://d1csewd5rfh0r" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/3.png" id="5_mb40c"]
+[ext_resource type="Texture2D" uid="uid://bf0rmw0r1txw0" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/4.png" id="6_mdbg0"]
+[ext_resource type="Texture2D" uid="uid://bars8ksueo78m" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 8/5.png" id="7_7r21k"]
+[ext_resource type="Texture2D" uid="uid://h5u2kjvf0pol" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/6.png" id="7_c638u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b42ut"]
 font_size = 48
@@ -26,6 +32,8 @@ grow_vertical = 2
 script = ExtResource("1_v3fht")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1240836281]
+visible = false
+z_index = -20
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +41,85 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hqtmt")
+
+[node name="ParallaxBG" type="ParallaxBackground" parent="." unique_id=1123352209]
+layer = -10
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBG" unique_id=227655687]
+texture_repeat = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer" unique_id=1678111253]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("3_ts2fx")
+
+[node name="SkyLayer2" type="ParallaxLayer" parent="ParallaxBG" unique_id=1354906747]
+texture_repeat = 2
+motion_scale = Vector2(0.15, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer2" unique_id=1692238409]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("4_8w8b8")
+
+[node name="SkyLayer3" type="ParallaxLayer" parent="ParallaxBG" unique_id=1272035691]
+texture_repeat = 2
+motion_scale = Vector2(0.01, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer3" unique_id=222775687]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("5_mb40c")
+
+[node name="SkyLayer4" type="ParallaxLayer" parent="ParallaxBG" unique_id=645047665]
+texture_repeat = 2
+motion_scale = Vector2(0.6, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer4" unique_id=214334519]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("6_mdbg0")
+
+[node name="SkyLayer5" type="ParallaxLayer" parent="ParallaxBG" unique_id=1995926686]
+texture_repeat = 2
+motion_scale = Vector2(0.95, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer5" unique_id=1472764361]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("7_7r21k")
+
+[node name="SkyLayer6" type="ParallaxLayer" parent="ParallaxBG" unique_id=190186223]
+visible = false
+texture_repeat = 2
+motion_scale = Vector2(1.2, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer6" unique_id=2116534031]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("7_c638u")
 
 [node name="DarkOverlay" type="ColorRect" parent="." unique_id=1650720168]
 layout_mode = 1
