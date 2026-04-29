@@ -3,6 +3,10 @@ extends Node
 var current_score : int = 0
 var leaderboard : Array = []
 
+var coins := 0
+var unlocked_skins = ["samurai3"]
+var equipped_skin = "samurai3"
+
 const SAVE_PATH = "user://save.json"
 
 func _ready():
@@ -53,24 +57,42 @@ func submit_score(player_name:String, score:int):
 	save_data()
 
 func save_data():
+	var data = {
+		"leaderboard": leaderboard,
+		"coins": coins,
+		"unlocked_skins": unlocked_skins,
+		"equipped_skin": equipped_skin
+	}
+
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+
 	if file:
-		file.store_string(JSON.stringify(leaderboard))
+		file.store_string(JSON.stringify(data))
 		file.close()
 
 func load_data():
 	if not FileAccess.file_exists(SAVE_PATH):
 		leaderboard = []
+		coins = 0
+		unlocked_skins = ["samurai3"]
+		equipped_skin = "samurai3"
 		return
-		
+
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+
 	if file:
 		var text = file.get_as_text()
 		file.close()
-		
+
 		var result = JSON.parse_string(text)
-		
-		if result is Array:
-			leaderboard = result
+
+		if result is Dictionary:
+			leaderboard = result.get("leaderboard", [])
+			coins = result.get("coins", 0)
+			unlocked_skins = result.get("unlocked_skins", ["samurai3"])
+			equipped_skin = result.get("equipped_skin", "samurai3")
 		else:
 			leaderboard = []
+			coins = 0
+			unlocked_skins = ["samurai3"]
+			equipped_skin = "samurai3"

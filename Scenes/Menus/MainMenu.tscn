@@ -44,6 +44,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.41960785)
 
 [node name="Title" type="Label" parent="." unique_id=979304784]
+texture_filter = 1
 layout_mode = 0
 offset_left = 400.0
 offset_top = 72.0
@@ -63,6 +64,7 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=748124051]
+texture_filter = 1
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -72,6 +74,7 @@ text = "PLAY"
 script = ExtResource("2_b42ut")
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1743252040]
+texture_filter = 1
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -80,6 +83,7 @@ text = "SETTINGS"
 script = ExtResource("2_b42ut")
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1396579581]
+texture_filter = 1
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -88,6 +92,7 @@ text = "CREDITS"
 script = ExtResource("2_b42ut")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1816006113]
+texture_filter = 1
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -96,6 +101,7 @@ text = "QUIT"
 script = ExtResource("2_b42ut")
 
 [node name="LeaderboardTitle" type="Label" parent="." unique_id=248812924]
+texture_filter = 1
 layout_mode = 0
 offset_left = 726.0
 offset_top = 267.0
@@ -104,8 +110,23 @@ offset_bottom = 290.0
 text = "TOP SCORES"
 
 [node name="LeaderboardLabel" type="Label" parent="." unique_id=1349315883]
+texture_filter = 1
 layout_mode = 0
 offset_left = 722.0
 offset_top = 317.0
 offset_right = 1158.0
 offset_bottom = 419.0
+
+[node name="CoinsLabel" type="Label" parent="." unique_id=1064066798]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_top = 26.0
+offset_right = -26.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.9833146, 0.90597224, 0.5545178, 1)
+text = "RYO : 2450"

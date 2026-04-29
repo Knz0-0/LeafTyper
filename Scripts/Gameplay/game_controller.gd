@@ -155,15 +155,17 @@ func cut_leaf(leaf):
 			combo,
 			true
 		)
-	# hit_freeze(0.06)
 	var pitch_bonus = min(combo * 0.025, 0.30)
 	if combo <= 3:
 		SoundManager.play_sfx("slash", -8, pitch_bonus)
 	elif combo <= 6:
+		hit_freeze(0.05)
 		SoundManager.play_sfx("clash", -8, pitch_bonus)
 	elif combo <= 9:
+		hit_freeze(0.08)
 		SoundManager.play_sfx("tung", -8, pitch_bonus)
 	else:
+		hit_freeze(0.1)
 		SoundManager.play_sfx("epic", -8, pitch_bonus)
 	
 	update_ui()

@@ -1,15 +1,21 @@
 extends Control
 
 @onready var leaderboard_label = $LeaderboardLabel
+@onready var play_button = $VBoxContainer/PlayButton
+@onready var settings_button = $VBoxContainer/SettingsButton
+@onready var credits_button = $VBoxContainer/CreditsButton
+@onready var quit_button = $VBoxContainer/QuitButton
+@onready var coins_label = $CoinsLabel
 
 func _ready():
 	MusicManager.play_menu()
 	update_leaderboard()
+	coins_label.text = "RYO : " + str(GameManager.coins)
 
-	$VBoxContainer/PlayButton.pressed.connect(_on_play_pressed)
-	$VBoxContainer/SettingsButton.pressed.connect(_on_settings_pressed)
-	$VBoxContainer/CreditsButton.pressed.connect(_on_credits_pressed)
-	$VBoxContainer/QuitButton.pressed.connect(_on_quit_pressed)
+	play_button.pressed.connect(_on_play_pressed)
+	settings_button.pressed.connect(_on_settings_pressed)
+	credits_button.pressed.connect(_on_credits_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
 
 func update_leaderboard():
 	var text = ""
