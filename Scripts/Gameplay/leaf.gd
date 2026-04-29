@@ -44,7 +44,12 @@ func play_cut_effect():
 	var timer = 0.0
 
 	while timer < duration:
+		if get_tree() == null:
+			return
 		await get_tree().process_frame
+		if !is_inside_tree():
+			return
+		
 		timer += get_process_delta_time()
 
 		var t = timer / duration
@@ -84,7 +89,12 @@ func play_ground_impact():
 	var timer = 0.0
 
 	while timer < duration:
+		if get_tree() == null:
+			return
 		await get_tree().process_frame
+		if !is_inside_tree():
+			return
+		
 		timer += get_process_delta_time()
 
 		var t = timer / duration
