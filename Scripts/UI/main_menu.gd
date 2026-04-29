@@ -3,6 +3,7 @@ extends Control
 @onready var leaderboard_label = $LeaderboardLabel
 
 func _ready():
+	MusicManager.play_menu()
 	update_leaderboard()
 
 	$VBoxContainer/PlayButton.pressed.connect(_on_play_pressed)
@@ -23,10 +24,11 @@ func update_leaderboard():
 	leaderboard_label.text = text
 
 func _on_play_pressed():
+	SoundManager.play_sfx("clash")
 	GameManager.start_game()
 
 func _on_settings_pressed():
-	print("Settings later 😏")
+	print("Settings later")
 
 func _on_credits_pressed():
 	print("Made by Kenzo the last-minute legend")

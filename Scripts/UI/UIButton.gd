@@ -23,6 +23,7 @@ func _process(delta):
 
 func _on_hover_enter():
 	hover = true
+	SoundManager.play_sfx("interface_hover", -16)
 
 func _on_hover_exit():
 	hover = false

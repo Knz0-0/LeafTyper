@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d2hmtxfm4aif3" path="res://Scripts/UI/main_menu.gd" id="1_v3fht"]
 [ext_resource type="Script" uid="uid://do04rmms4h4ye" path="res://Scripts/UI/UIButton.gd" id="2_b42ut"]
+[ext_resource type="Texture2D" uid="uid://vv64bqytsstt" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 7/1.png" id="2_hqtmt"]
+[ext_resource type="Theme" uid="uid://lcbdvvqemx8r" path="res://Themes/default.tres" id="3_tfrft"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b42ut"]
 font_size = 48
@@ -23,11 +25,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v3fht")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1974928073]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.0627451, 0.09411765, 0.1254902, 1)
+[node name="Background" type="TextureRect" parent="." unique_id=1240836281]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hqtmt")
+
+[node name="DarkOverlay" type="ColorRect" parent="." unique_id=1650720168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.41960785)
 
 [node name="Title" type="Label" parent="." unique_id=979304784]
 layout_mode = 0
@@ -51,6 +65,8 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=748124051]
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_tfrft")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_b42ut")
 text = "PLAY"
 script = ExtResource("2_b42ut")
@@ -58,6 +74,7 @@ script = ExtResource("2_b42ut")
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1743252040]
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hqtmt")
 text = "SETTINGS"
 script = ExtResource("2_b42ut")
@@ -65,6 +82,7 @@ script = ExtResource("2_b42ut")
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1396579581]
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tfrft")
 text = "CREDITS"
 script = ExtResource("2_b42ut")
@@ -72,6 +90,7 @@ script = ExtResource("2_b42ut")
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1816006113]
 custom_minimum_size = Vector2(260, 60)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uv623")
 text = "QUIT"
 script = ExtResource("2_b42ut")

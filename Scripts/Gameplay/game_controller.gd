@@ -11,6 +11,7 @@ extends Node2D
 @onready var final_score_label = $UI/GameOverPanel/FinalScore
 @onready var name_edit = $UI/GameOverPanel/NameEdit
 @onready var validate_button = $UI/GameOverPanel/ValidateButton
+@onready var play_again_button = $UI/GameOverPanel/PlayAgainButton
 
 var leaf_scene = preload("res://Scenes/Gameplay/Leaf.tscn")
 var active_leaves = []
@@ -38,9 +39,11 @@ func _ready():
 	player.landed.connect(_on_player_landed)
 	update_ui()
 	validate_button.pressed.connect(_on_validate_pressed)
+	play_again_button.pressed.connect(_on_play_again_pressed)
 	game_over_panel.visible = false
 	camera.zoom = Vector2.ONE
 	cam_target_x = player.global_position.x
+	MusicManager.play_game()
 
 func _process(delta):
 	
@@ -132,7 +135,17 @@ func cut_leaf(leaf):
 			combo,
 			true
 		)
-	hit_freeze(0.06)
+	# hit_freeze(0.06)
+	var pitch_bonus = min(combo * 0.025, 0.30)
+	if combo <= 3:
+		SoundManager.play_sfx("slash", -8, pitch_bonus)
+	elif combo <= 6:
+		SoundManager.play_sfx("clash", -8, pitch_bonus)
+	elif combo <= 9:
+		SoundManager.play_sfx("tung", -8, pitch_bonus)
+	else:
+		SoundManager.play_sfx("epic", -8, pitch_bonus)
+	
 	update_ui()
 
 func fail_combo():
@@ -144,12 +157,14 @@ func fail_combo():
 		true
 	)
 	player.play_hurt()
+	# SoundManager.play_sfx("tung")
 	update_ui()
 
 func _on_player_landed():
 	spawn_landing_particles(player.global_position)
 	if pending_score > 0:
 		GameManager.add_score(pending_score)
+		SoundManager.play_sfx("score_up1")
 		spawn_score_popup(
 			player.global_position + Vector2(0, -70),
 			pending_score
@@ -165,6 +180,7 @@ func _on_leaf_ground(leaf):
 		return
 	game_over = true
 	active_leaves.erase(leaf)
+	SoundManager.play_sfx("game_over")
 	player.play_death()
 	await player.sprite.animation_finished
 	trigger_game_over()
@@ -174,8 +190,8 @@ func update_ui():
 	combo_label.text = "COMBO: " + str(combo)
 	
 func trigger_game_over():
+	MusicManager.fade_to_game_over()
 	game_over = true
-	
 	await play_death_fade()
 
 	final_score_label.text = "Score: " + str(GameManager.current_score)
@@ -208,8 +224,17 @@ func _on_validate_pressed():
 			player_name = "NONAME"
 
 		GameManager.submit_score(player_name, GameManager.current_score)
-
 	GameManager.return_to_menu()
+
+func _on_play_again_pressed():
+	if GameManager.is_highscore(GameManager.current_score):
+		var player_name = name_edit.text.strip_edges()
+
+		if player_name == "":
+			player_name = "NONAME"
+
+		GameManager.submit_score(player_name, GameManager.current_score)
+	GameManager.start_game()
 	
 func hit_freeze(duration:float):
 	Engine.time_scale = 0.01

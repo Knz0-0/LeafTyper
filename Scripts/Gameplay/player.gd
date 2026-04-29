@@ -3,7 +3,7 @@ extends Node2D
 signal landed
 
 var velocity := Vector2.ZERO
-var gravity := 1600.0
+var gravity := 1800.0
 var is_airborne := false
 var ground_y := 650.0
 
@@ -29,6 +29,7 @@ func _process(delta):
 			velocity = Vector2.ZERO
 			is_airborne = false
 			landed.emit()
+			SoundManager.play_sfx("land")
 			if death_pending:
 				start_death_sequence()
 			else:
@@ -98,7 +99,7 @@ func start_death_sequence():
 func play_hurt():
 	if is_dead:
 		return
-
+	SoundManager.play_sfx("hurt")
 	sprite.play("hurt")
 	sprite.frame = 0
 	await sprite.animation_finished
