@@ -47,8 +47,8 @@ func dash_to(target_pos:Vector2):
 	global_position = target_pos
 
 	is_airborne = true
-	velocity = dash_dir * 220
-	velocity.y -= 180
+	velocity = dash_dir * 300
+	velocity.y -= 100
 
 func spawn_dash_slash(start_pos:Vector2, end_pos:Vector2):
 	var scene = preload("res://Scenes/Components/DashSlash.tscn")

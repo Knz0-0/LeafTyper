@@ -89,11 +89,7 @@ func _process(delta):
 func handle_spawning():
 	if spawn_timer >= spawn_interval:
 		spawn_timer = 0.0
-
-		var letter = random_letter()
-		var x_pos = randf_range(120, 1160)
-
-		spawn_leaf(letter, x_pos)
+		spawn_random_leaf()
 
 		var diff = difficulty_level()
 		spawn_interval = lerp(2.5, 1.0, diff)
@@ -241,8 +237,7 @@ func trigger_game_over():
 	final_score_label.text = "Score: " + str(GameManager.current_score)
 	game_over_panel.visible = true
 	GameManager.reward_coins_from_run()
-	await fade_in_coins()
-	await animate_coins()
+	
 
 	if GameManager.is_highscore(GameManager.current_score):
 		name_edit.visible = true
@@ -251,6 +246,9 @@ func trigger_game_over():
 		name_edit.visible = false
 		validate_button.text = "Back To Menu"
 		validate_button.visible = true
+	
+	await fade_in_coins()
+	await animate_coins()
 
 func play_death_fade():
 	var duration = 0.8
