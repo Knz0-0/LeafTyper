@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dm517esltjmvu" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/4.png" id="5_pokre"]
 [ext_resource type="Texture2D" uid="uid://d1wovs17xvacw" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/5.png" id="6_73bp4"]
 [ext_resource type="Texture2D" uid="uid://h5u2kjvf0pol" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/6.png" id="7_tsetf"]
+[ext_resource type="Script" uid="uid://camnrbylkjcff" path="res://Scripts/Utils/procedural_ground.gd" id="8_vgtp8"]
 
 [node name="Game" type="Node2D" unique_id=559088453]
 script = ExtResource("1_cg2pt")
@@ -41,7 +42,7 @@ texture = ExtResource("2_rtcwi")
 
 [node name="SkyLayer2" type="ParallaxLayer" parent="ParallaxBG" unique_id=1112501456]
 texture_repeat = 2
-motion_scale = Vector2(0.15, 0.15)
+motion_scale = Vector2(0.15, 0.01)
 motion_offset = Vector2(-864, 0)
 motion_mirroring = Vector2(1728, 0)
 
@@ -54,7 +55,7 @@ texture = ExtResource("3_vgtp8")
 
 [node name="SkyLayer3" type="ParallaxLayer" parent="ParallaxBG" unique_id=26250309]
 texture_repeat = 2
-motion_scale = Vector2(0.35, 0.35)
+motion_scale = Vector2(0.01, 0.01)
 motion_offset = Vector2(-864, 0)
 motion_mirroring = Vector2(1728, 0)
 
@@ -67,7 +68,7 @@ texture = ExtResource("4_dfiyb")
 
 [node name="SkyLayer4" type="ParallaxLayer" parent="ParallaxBG" unique_id=1883088216]
 texture_repeat = 2
-motion_scale = Vector2(0.6, 0.6)
+motion_scale = Vector2(0.6, 0.01)
 motion_offset = Vector2(-864, 0)
 motion_mirroring = Vector2(1728, 0)
 
@@ -80,7 +81,7 @@ texture = ExtResource("5_pokre")
 
 [node name="SkyLayer5" type="ParallaxLayer" parent="ParallaxBG" unique_id=1268161062]
 texture_repeat = 2
-motion_scale = Vector2(0.95, 0.95)
+motion_scale = Vector2(0.95, 0.01)
 motion_offset = Vector2(-864, 0)
 motion_mirroring = Vector2(1728, 0)
 
@@ -93,7 +94,7 @@ texture = ExtResource("6_73bp4")
 
 [node name="SkyLayer6" type="ParallaxLayer" parent="ParallaxBG" unique_id=2069938882]
 texture_repeat = 2
-motion_scale = Vector2(1.2, 1.2)
+motion_scale = Vector2(1.2, 0.01)
 motion_offset = Vector2(-864, 0)
 motion_mirroring = Vector2(1728, 0)
 
@@ -109,6 +110,14 @@ offset_top = 650.0
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+
+[node name="ProceduralGround" type="Node2D" parent="." unique_id=946352535]
+position = Vector2(0, 620)
+script = ExtResource("8_vgtp8")
+
+[node name="GrassTop" type="Sprite2D" parent="ProceduralGround" unique_id=1037298368]
+texture_filter = 1
+centered = false
 
 [node name="LeafSpawner" type="Node" parent="." unique_id=899849520]
 

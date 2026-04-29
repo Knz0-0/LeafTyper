@@ -29,7 +29,7 @@ func _process(delta):
 			velocity = Vector2.ZERO
 			is_airborne = false
 			landed.emit()
-			SoundManager.play_sfx("land")
+			SoundManager.play_sfx("land", -15)
 			if death_pending:
 				start_death_sequence()
 			else:

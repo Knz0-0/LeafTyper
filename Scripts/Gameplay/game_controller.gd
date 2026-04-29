@@ -13,6 +13,18 @@ extends Node2D
 @onready var validate_button = $UI/GameOverPanel/ValidateButton
 @onready var play_again_button = $UI/GameOverPanel/PlayAgainButton
 
+@onready var parallax_layer = $ParallaxBG/SkyLayer
+@onready var parallax_layer2 = $ParallaxBG/SkyLayer2
+@onready var parallax_layer3 = $ParallaxBG/SkyLayer3
+@onready var parallax_layer4 = $ParallaxBG/SkyLayer4
+@onready var parallax_layer5 = $ParallaxBG/SkyLayer5
+@onready var parallax_layer6 = $ParallaxBG/SkyLayer6
+var layer2_base_y
+var layer3_base_y
+var layer4_base_y
+var layer5_base_y
+var layer6_base_y
+
 var leaf_scene = preload("res://Scenes/Gameplay/Leaf.tscn")
 var active_leaves = []
 
@@ -28,11 +40,12 @@ var game_over := false
 var freeze_end_time := 0
 var was_frozen := false
 
-
 var cam_target_x := 640.0
 var cam_zoom_target := Vector2.ONE
 const CAM_MIN_ZOOM := 1.0
 const CAM_MAX_ZOOM := 0.72
+
+var bg_time := 0.0
 
 func _ready():
 	randomize()
@@ -44,6 +57,11 @@ func _ready():
 	camera.zoom = Vector2.ONE
 	cam_target_x = player.global_position.x
 	MusicManager.play_game()
+	layer2_base_y = parallax_layer2.position.y
+	layer3_base_y = parallax_layer3.position.y
+	layer4_base_y = parallax_layer4.position.y
+	layer5_base_y = parallax_layer5.position.y
+	layer6_base_y = parallax_layer6.position.y
 
 func _process(delta):
 	
@@ -60,6 +78,8 @@ func _process(delta):
 	
 	elapsed_time += delta
 	spawn_timer += delta
+	bg_time += delta
+	update_parallax_bob()
 	check_keyboard_inputs()
 	handle_spawning()
 
@@ -224,6 +244,7 @@ func _on_validate_pressed():
 			player_name = "NONAME"
 
 		GameManager.submit_score(player_name, GameManager.current_score)
+	await TransitionManager.play_transition()
 	GameManager.return_to_menu()
 
 func _on_play_again_pressed():
@@ -296,3 +317,15 @@ func spawn_landing_particles(pos:Vector2):
 	add_child(p)
 	p.global_position = pos
 	p.emitting = true
+	
+func update_parallax_bob():
+	parallax_layer2.motion_offset.y = sin(bg_time * 0.22 + 0.4) * 8 \
+	+ sin(bg_time * 0.51) * 2
+	parallax_layer3.motion_offset.y = sin(bg_time * 0.28 + 1.1) * 12 \
+	+ sin(bg_time * 0.63) * 3
+	parallax_layer4.motion_offset.y = sin(bg_time * 0.35 + 2.0) * 16 \
+	+ sin(bg_time * 0.74) * 4
+	parallax_layer5.motion_offset.y = sin(bg_time * 0.43 + 0.8) * 22 \
+	+ sin(bg_time * 0.92) * 5
+	parallax_layer6.motion_offset.y = sin(bg_time * 0.55 + 1.7) * 28 \
+	+ sin(bg_time * 1.15) * 6

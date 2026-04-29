@@ -16,18 +16,24 @@ func _ready():
 	player.play()
 
 func play_menu():
-	if player.stream == menu_music:
-		return
-
-	player.stream = menu_music
-	player.play()
+	if player.stream != menu_music:
+		player.stop()
+		player.stream = menu_music
+	
+	player.volume_db = -25
+	
+	if not player.playing:
+		player.play()
 
 func play_game():
-	if player.stream == game_music:
-		return
+	if player.stream != game_music:
+		player.stop()
+		player.stream = game_music
 
-	player.stream = game_music
-	player.play()
+	player.volume_db = -20
+
+	if not player.playing:
+		player.play()
 
 func stop_music():
 	player.stop()

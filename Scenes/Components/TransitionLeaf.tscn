@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c3jq4u0iuh4qr"]
+
+[ext_resource type="Script" uid="uid://d2yyatgmsi5t2" path="res://Scripts/Components/transition_leaf.gd" id="1_n6aek"]
+[ext_resource type="Texture2D" uid="uid://dtrcldpc5ln6x" path="res://Assets/Sprites/ELR-WindyLeafs/ELR_WinterlLeaf.png" id="1_omcxb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6aek"]
+atlas = ExtResource("1_omcxb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bomo8"]
+atlas = ExtResource("1_omcxb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7xyo"]
+atlas = ExtResource("1_omcxb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu7t8"]
+atlas = ExtResource("1_omcxb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeaae"]
+atlas = ExtResource("1_omcxb")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6k6w8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6aek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bomo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7xyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu7t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeaae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu7t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7xyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bomo8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="TransitionLeaf" type="Node2D" unique_id=1433254997]
+script = ExtResource("1_n6aek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670758957]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_6k6w8")
+frame_progress = 0.6976098

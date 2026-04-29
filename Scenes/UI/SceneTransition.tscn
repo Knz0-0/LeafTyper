@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cj151f51gpi52"]
+
+[ext_resource type="Script" uid="uid://5vot4wiskjns" path="res://Scripts/Managers/TransitionManager.gd" id="1_iqvho"]
+
+[node name="SceneTransition" type="CanvasLayer" unique_id=2071493629]
+layer = 100
+script = ExtResource("1_iqvho")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1453548827]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="LeavesContainer" type="Node2D" parent="." unique_id=442342312]
+z_index = 1

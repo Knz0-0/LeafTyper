@@ -16,10 +16,18 @@ func add_score(value:int):
 
 func start_game():
 	reset_run()
+	await TransitionManager.play_transition()
 	get_tree().change_scene_to_file("res://Scenes/Gameplay/Game.tscn")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await TransitionManager.fade_back_in()
 
 func return_to_menu():
+	await TransitionManager.play_transition()
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await TransitionManager.fade_back_in()
 
 func is_highscore(score:int) -> bool:
 	if leaderboard.size() < 5:
