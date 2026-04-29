@@ -3,7 +3,7 @@ extends Node
 var player : AudioStreamPlayer
 
 var menu_music = preload("res://Assets/Audio/Music/GoT_menu_flute.ogg")
-var game_music = preload("res://Assets/Audio/Music/ancient-japan.ogg")
+var game_music = preload("res://Assets/Audio/Music/japan.ogg")
 var game_over_music = preload("res://Assets/Audio/Music/sad_flute.ogg")
 
 func _ready():

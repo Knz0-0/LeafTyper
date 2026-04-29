@@ -26,7 +26,7 @@ func play_sfx(name:String, volume_db := -8.0, pitch_bonus := 0.0):
 
 	player.stream = sounds[name]
 	player.volume_db = volume_db
-	player.pitch_scale = randf_range(0.95, 1.07) + pitch_bonus
+	player.pitch_scale = randf_range(0.98, 1.02) + pitch_bonus
 
 	player.finished.connect(player.queue_free)
 

@@ -155,7 +155,7 @@ func cut_leaf(leaf):
 			combo,
 			true
 		)
-	var pitch_bonus = min(combo * 0.025, 0.30)
+	var pitch_bonus = min(combo * 0.045, 0.55)
 	if combo <= 3:
 		SoundManager.play_sfx("slash", -8, pitch_bonus)
 	elif combo <= 6:
@@ -179,7 +179,6 @@ func fail_combo():
 		true
 	)
 	player.play_hurt()
-	# SoundManager.play_sfx("tung")
 	update_ui()
 
 func _on_player_landed():
@@ -218,6 +217,7 @@ func trigger_game_over():
 
 	final_score_label.text = "Score: " + str(GameManager.current_score)
 	game_over_panel.visible = true
+	GameManager.reward_coins_from_run()
 
 	if GameManager.is_highscore(GameManager.current_score):
 		name_edit.visible = true

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dnbra721j48db" path="res://Scripts/Gameplay/dash_slash.gd" id="1_jbgc5"]
 
 [sub_resource type="Gradient" id="Gradient_x8nms"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
 
 [node name="DashSlash" type="Node2D" unique_id=1081624181]
 script = ExtResource("1_jbgc5")

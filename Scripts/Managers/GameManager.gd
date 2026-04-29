@@ -96,3 +96,7 @@ func load_data():
 			coins = 0
 			unlocked_skins = ["samurai3"]
 			equipped_skin = "samurai3"
+			
+func reward_coins_from_run():
+	coins += current_score /10
+	save_data()
