@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cbcxuvcrpg7m7"]
+
+[ext_resource type="Script" uid="uid://bv7ojwb5m0ogq" path="res://Scripts/Managers/VFXManager.gd" id="1_868si"]
+
+[node name="VfxManager" type="CanvasLayer" unique_id=142682540]
+script = ExtResource("1_868si")
+
+[node name="Flash" type="ColorRect" parent="." unique_id=2134360328]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

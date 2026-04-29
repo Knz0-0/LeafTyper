@@ -4,6 +4,7 @@ var current_score : int = 0
 var leaderboard : Array = []
 
 var coins := 0
+var coins_before_run := 0
 var unlocked_skins = ["samurai3"]
 var equipped_skin = "samurai3"
 
@@ -98,5 +99,12 @@ func load_data():
 			equipped_skin = "samurai3"
 			
 func reward_coins_from_run():
+	coins_before_run = coins
 	coins += current_score /10
 	save_data()
+	
+func delete_save():
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+
+	load_data()

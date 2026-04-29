@@ -3,7 +3,7 @@ extends Node2D
 @onready var player = $Player
 @onready var UI = $UI
 @onready var score_label = $UI/ScoreLabel
-@onready var combo_label = $UI/ComboLabel
+# @onready var combo_label = $UI/ComboLabel
 @onready var camera = $Camera2D
 @onready var death_fade = $UI/DeathFade
 
@@ -12,6 +12,7 @@ extends Node2D
 @onready var name_edit = $UI/GameOverPanel/NameEdit
 @onready var validate_button = $UI/GameOverPanel/ValidateButton
 @onready var play_again_button = $UI/GameOverPanel/PlayAgainButton
+@onready var coins_label = $UI/CoinsLabel
 
 @onready var parallax_layer = $ParallaxBG/SkyLayer
 @onready var parallax_layer2 = $ParallaxBG/SkyLayer2
@@ -50,6 +51,8 @@ var bg_time := 0.0
 func _ready():
 	randomize()
 	player.landed.connect(_on_player_landed)
+	coins_label.visible = false
+	coins_label.modulate.a = 0.0
 	update_ui()
 	validate_button.pressed.connect(_on_validate_pressed)
 	play_again_button.pressed.connect(_on_play_again_pressed)
@@ -64,7 +67,8 @@ func _ready():
 	layer6_base_y = parallax_layer6.position.y
 
 func _process(delta):
-	
+	if game_over:
+		return
 	if was_frozen:
 		if Time.get_ticks_msec() >= freeze_end_time:
 			Engine.time_scale = 1.0
@@ -73,8 +77,7 @@ func _process(delta):
 			return
 	handle_camera_follow(delta)
 	
-	if game_over:
-		return
+	
 	
 	elapsed_time += delta
 	spawn_timer += delta
@@ -93,7 +96,7 @@ func handle_spawning():
 		spawn_leaf(letter, x_pos)
 
 		var diff = difficulty_level()
-		spawn_interval = lerp(2.5, 0.75, diff)
+		spawn_interval = lerp(2.5, 1.0, diff)
 
 func spawn_leaf(letter:String, x_pos:float):
 	var leaf = leaf_scene.instantiate()
@@ -102,12 +105,17 @@ func spawn_leaf(letter:String, x_pos:float):
 	leaf.global_position = Vector2(x_pos, -330)
 	leaf.set_letter(letter)
 	var diff = difficulty_level()
-	leaf.fall_speed = lerp(75, 175, diff) * randf_range(0.8, 1.2)
-	# leaf.fall_speed = randi_range(75, 100)
+	leaf.fall_speed = lerp(75, 175, diff) + randf_range(0.0, 9.0)
+	
 
 	leaf.reached_ground.connect(_on_leaf_ground.bind(leaf))
 
 	active_leaves.append(leaf)
+	
+func spawn_random_leaf():
+	var letter = random_letter()
+	var x_pos = randf_range(120, 1160)
+	spawn_leaf(letter, x_pos)
 
 func random_letter() -> String:
 	var diff = difficulty_level()
@@ -148,7 +156,17 @@ func cut_leaf(leaf):
 	var dash_dir = (leaf.global_position - player.global_position).normalized()
 	player.dash_to(leaf.global_position)
 	spawn_cut_particles(leaf.global_position, dash_dir)
+	
 	leaf.destroy_leaf()
+	
+	var diff = difficulty_level()
+
+	var chance = 0.12 + diff * 0.10
+	chance += sqrt(combo) * 0.14
+	chance = min(chance, 0.92)
+	if active_leaves.size() < 8 and randf() < chance:
+		spawn_random_leaf()
+	
 	if combo >= 2:
 		spawn_score_popup(
 			leaf.global_position + Vector2(0, 28),
@@ -161,12 +179,17 @@ func cut_leaf(leaf):
 	elif combo <= 6:
 		hit_freeze(0.05)
 		SoundManager.play_sfx("clash", -8, pitch_bonus)
+		VFXManager.white_flash()
 	elif combo <= 9:
 		hit_freeze(0.08)
 		SoundManager.play_sfx("tung", -8, pitch_bonus)
+		VFXManager.black_flash()
 	else:
-		hit_freeze(0.1)
+		hit_freeze(0.2)
 		SoundManager.play_sfx("epic", -8, pitch_bonus)
+		VFXManager.black_flash(1.0, 0.03)
+		await get_tree().process_frame
+		VFXManager.white_flash(0.75, 0.10)
 	
 	update_ui()
 
@@ -208,7 +231,7 @@ func _on_leaf_ground(leaf):
 
 func update_ui():
 	score_label.text = "SCORE: " + str(GameManager.current_score)
-	combo_label.text = "COMBO: " + str(combo)
+	# combo_label.text = "COMBO: " + str(combo)
 	
 func trigger_game_over():
 	MusicManager.fade_to_game_over()
@@ -218,6 +241,8 @@ func trigger_game_over():
 	final_score_label.text = "Score: " + str(GameManager.current_score)
 	game_over_panel.visible = true
 	GameManager.reward_coins_from_run()
+	await fade_in_coins()
+	await animate_coins()
 
 	if GameManager.is_highscore(GameManager.current_score):
 		name_edit.visible = true
@@ -331,3 +356,36 @@ func update_parallax_bob():
 	+ sin(bg_time * 0.92) * 5
 	parallax_layer6.motion_offset.y = sin(bg_time * 0.55 + 1.7) * 28 \
 	+ sin(bg_time * 1.15) * 6
+
+
+func fade_in_coins():
+	var timer = 0.0
+	var duration = 0.45
+	coins_label.visible = true
+
+	while timer < duration:
+		await get_tree().process_frame
+		timer += get_process_delta_time()
+
+		var t = timer / duration
+		coins_label.modulate.a = t
+
+	coins_label.modulate.a = 1.0
+
+func animate_coins():
+	var from = GameManager.coins_before_run
+	var to = GameManager.coins
+
+	var timer = 0.0
+	var duration = 1.0
+
+	while timer < duration:
+		await get_tree().process_frame
+		timer += get_process_delta_time()
+
+		var t = timer / duration
+		var value = roundi(lerp(from, to, t))
+
+		coins_label.text = "RYO : " + str(value)
+
+	coins_label.text = "RYO : " + str(to)

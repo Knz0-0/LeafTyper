@@ -25,7 +25,7 @@ func update_leaderboard():
 	else:
 		for i in range(GameManager.leaderboard.size()):
 			var entry = GameManager.leaderboard[i]
-			text += str(i + 1) + ". " + entry["name"] + " - " + str(entry["score"]) + "\n"
+			text += str(i + 1) + ". " +  entry["name"] + " - " + str(int(entry["score"])) + "\n"
 
 	leaderboard_label.text = text
 
