@@ -5,13 +5,15 @@ var leaderboard : Array = []
 
 var coins := 0
 var coins_before_run := 0
-var unlocked_skins = ["samurai3"]
-var equipped_skin = "samurai3"
+var unlocked_skins = ["Samurai3"]
+var equipped_skin = "WolfSamurai"
+
 
 const SAVE_PATH = "user://save.json"
 
 func _ready():
 	load_data()
+	equipped_skin = "Samurai1"
 
 func reset_run():
 	current_score = 0
@@ -75,8 +77,8 @@ func load_data():
 	if not FileAccess.file_exists(SAVE_PATH):
 		leaderboard = []
 		coins = 0
-		unlocked_skins = ["samurai3"]
-		equipped_skin = "samurai3"
+		unlocked_skins = ["Samurai2", "Samurai3"]
+		equipped_skin = "Samurai3"
 		return
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -90,13 +92,13 @@ func load_data():
 		if result is Dictionary:
 			leaderboard = result.get("leaderboard", [])
 			coins = result.get("coins", 0)
-			unlocked_skins = result.get("unlocked_skins", ["samurai3"])
-			equipped_skin = result.get("equipped_skin", "samurai3")
+			unlocked_skins = result.get("unlocked_skins", ["Samurai3"])
+			equipped_skin = result.get("equipped_skin", "Samurai3")
 		else:
 			leaderboard = []
 			coins = 0
-			unlocked_skins = ["samurai3"]
-			equipped_skin = "samurai3"
+			unlocked_skins = ["Samurai3"]
+			equipped_skin = "Samurai3"
 			
 func reward_coins_from_run():
 	coins_before_run = coins
@@ -106,5 +108,4 @@ func reward_coins_from_run():
 func delete_save():
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
-
 	load_data()

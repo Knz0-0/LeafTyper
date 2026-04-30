@@ -12,11 +12,34 @@ var is_dead := false
 var death_pending := false
 
 @onready var sprite = $Sprite
+var current_skin := ""
+var skin_offset_y := 0
+var flip_inverted := false
+
+var skin_offsets = {
+	"ArcherSamurai": 0,
+	"DemonSamurai": 0,
+	"ExecutionerSamurai": 0,
+	"PandaSamurai": 0,
+	"Samurai1": -66,
+	"Samurai2": -33,
+	"Samurai3": -66,
+	"Samurai4": -36,
+	"Samurai5": -38,
+	"Samurai6": -48,
+	"WolfSamurai": -46
+}
+
+var skin_flip_inverted = {
+	"WolfSamurai": true
+}
 
 
 func _ready():
+	print("Equipped skin:", GameManager.equipped_skin)
 	is_dead = false
 	global_position.y = ground_y
+	apply_skin(GameManager.equipped_skin)
 	sprite.play("idle")
 	
 	
@@ -39,10 +62,10 @@ func dash_to(target_pos:Vector2):
 	var start_pos = global_position
 	spawn_dash_slash(start_pos, target_pos)
 	var dash_dir = (target_pos - start_pos).normalized()
-	if dash_dir.x < 0:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	var facing_left = dash_dir.x < 0
+	if flip_inverted:
+		facing_left = !facing_left
+	sprite.flip_h = facing_left
 	play_random_attack()
 	global_position = target_pos
 
@@ -104,3 +127,17 @@ func play_hurt():
 	sprite.frame = 0
 	await sprite.animation_finished
 	sprite.play("idle")
+	
+
+func apply_skin(skin_name:String):
+	if skin_name == current_skin:
+		return
+	current_skin = skin_name
+	var path = "res://Assets/SpriteFrames/%s_SpriteFrames.tres" % skin_name
+	if ResourceLoader.exists(path):
+		sprite.frames = load(path)
+		skin_offset_y = skin_offsets.get(skin_name, 0)
+		sprite.position.y = skin_offset_y
+		flip_inverted = skin_flip_inverted.get(skin_name, false)
+	else:
+		print("Skin not found:", path)
