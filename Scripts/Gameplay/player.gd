@@ -17,10 +17,9 @@ var skin_offset_y := 0
 var flip_inverted := false
 
 var skin_offsets = {
-	"ArcherSamurai": 0,
-	"DemonSamurai": 0,
-	"ExecutionerSamurai": 0,
-	"PandaSamurai": 0,
+	"DemonSamurai": -84,
+	"ExecutionerSamurai": -60,
+	"PandaSamurai": -56,
 	"Samurai1": -66,
 	"Samurai2": -33,
 	"Samurai3": -66,
@@ -31,7 +30,9 @@ var skin_offsets = {
 }
 
 var skin_flip_inverted = {
-	"WolfSamurai": true
+	"WolfSamurai": true,
+	"PandaSamurai": true,
+	"ExecutionerSamurai": true,
 }
 
 

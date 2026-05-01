@@ -10,16 +10,15 @@ var equipped_skin = "Samurai1"
 
 var skins_data = {
 	"Samurai1": { "cost": 0 },
-	"Samurai2": { "cost": 500 },
-	"Samurai3": { "cost": 1000 },
-	"Samurai4": { "cost": 1500 },
-	"Samurai5": { "cost": 2000 },
-	"Samurai6": { "cost": 2500 },
-	"WolfSamurai": { "cost": 3000 },
-	"ArcherSamurai": { "cost": 3500 },
-	"DemonSamurai": { "cost": 4000 },
-	"ExecutionerSamurai": { "cost": 4500 },
-	"PandaSamurai": { "cost": 5000 }
+	"Samurai2": { "cost": 1500 },
+	"Samurai3": { "cost": 2000 },
+	"Samurai4": { "cost": 2000 },
+	"Samurai5": { "cost": 3000 },
+	"Samurai6": { "cost": 3000 },
+	"WolfSamurai": { "cost": 5000 },
+	"DemonSamurai": { "cost": 6000 },
+	"ExecutionerSamurai": { "cost": 5000 },
+	"PandaSamurai": { "cost": 9000 }
 }
 
 
@@ -91,8 +90,8 @@ func load_data():
 	if not FileAccess.file_exists(SAVE_PATH):
 		leaderboard = []
 		coins = 0
-		unlocked_skins = ["Samurai2", "Samurai3"]
-		equipped_skin = "Samurai3"
+		unlocked_skins = ["Samurai1"]
+		equipped_skin = "Samurai1"
 		return
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -106,13 +105,13 @@ func load_data():
 		if result is Dictionary:
 			leaderboard = result.get("leaderboard", [])
 			coins = result.get("coins", 0)
-			unlocked_skins = result.get("unlocked_skins", ["Samurai3"])
-			equipped_skin = result.get("equipped_skin", "Samurai3")
+			unlocked_skins = result.get("unlocked_skins", ["Samurai1"])
+			equipped_skin = result.get("equipped_skin", "Samurai1")
 		else:
 			leaderboard = []
 			coins = 0
-			unlocked_skins = ["Samurai3"]
-			equipped_skin = "Samurai3"
+			unlocked_skins = ["Samurai1"]
+			equipped_skin = "Samurai1"
 			
 func reward_coins_from_run():
 	coins_before_run = coins

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://pw4lxehx6rar"]
 
 [ext_resource type="Script" uid="uid://cw4r28lg30mwr" path="res://Scripts/Gameplay/player.gd" id="1_ypenk"]
-[ext_resource type="SpriteFrames" uid="uid://dkrstic5bbtok" path="res://Assets/SpriteFrames/Samurai1_SpriteFrames.tres" id="2_8i8gy"]
+[ext_resource type="SpriteFrames" uid="uid://c37kjdsyxygam" path="res://Assets/SpriteFrames/PandaSamurai_SpriteFrames.tres" id="2_8i8gy"]
 
 [node name="Player" type="Node2D" unique_id=971379593]
 script = ExtResource("1_ypenk")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=244155332]
 texture_filter = 1
-position = Vector2(0, -66)
+position = Vector2(0, -56)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_8i8gy")
-animation = &"defend"
+animation = &"idle"
