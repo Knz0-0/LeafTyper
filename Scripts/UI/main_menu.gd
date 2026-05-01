@@ -9,6 +9,20 @@ extends Control
 @onready var skin_button = $PreviewContainer/Button
 @onready var skin_preview = $PreviewContainer/Preview
 
+var skin_offsets = {
+	"DemonSamurai": -84,
+	"ExecutionerSamurai": -60,
+	"PandaSamurai": -56,
+	"Samurai1": -66,
+	"Samurai2": -33,
+	"Samurai3": -66,
+	"Samurai4": -36,
+	"Samurai5": -38,
+	"Samurai6": -48,
+	"WolfSamurai": -46
+}
+
+
 func _ready():
 	MusicManager.play_menu()
 	update_leaderboard()
@@ -59,7 +73,8 @@ func update_preview():
 	if ResourceLoader.exists(path):
 		skin_preview.frames = load(path)
 		skin_preview.play("idle")
-		
+		var offset = skin_offsets.get(skin, 0)
+		skin_preview.position.y = offset * 4 + 350
 
 func _on_preview_pressed():
 	SoundManager.play_sfx("clash")
