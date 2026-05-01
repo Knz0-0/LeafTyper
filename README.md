@@ -1,4 +1,4 @@
-# 🍃 Leaf Typer
+# Leaf Typer
 
 Leaf Typer is a fast-paced arcade game where reflexes, precision, and rhythm are everything.
 
@@ -17,7 +17,7 @@ The better you play, the harder the game pushes back.
 
 ---
 
-## ⚔️ Core Gameplay
+## Core Gameplay
 
 - Type the correct key to destroy falling leaves  
 - Build combos to increase your score  
@@ -26,7 +26,7 @@ The better you play, the harder the game pushes back.
 
 ---
 
-## 🔥 Features
+## Features
 
 - Dynamic difficulty scaling based on time and performance  
 - Combo-based feedback (visual effects, sound, hit freeze)  
@@ -37,7 +37,7 @@ The better you play, the harder the game pushes back.
 
 ---
 
-## 🪙 Progression System
+## Progression System
 
 Earn coins based on your score and unlock new skins:
 
@@ -47,7 +47,7 @@ Earn coins based on your score and unlock new skins:
 
 ---
 
-## 🎮 Controls
+## Controls
 
 | Key | Action |
 |-----|------|
@@ -56,7 +56,7 @@ Earn coins based on your score and unlock new skins:
 
 ---
 
-## 🛠️ Tech
+## Tech
 
 - Engine: Godot  
 - Language: GDScript  
@@ -64,7 +64,7 @@ Earn coins based on your score and unlock new skins:
 
 ---
 
-## 🚧 Current State
+## Current State
 
 The game is fully playable with:
 - Core gameplay loop
@@ -75,12 +75,12 @@ More polish and content may be added in future updates.
 
 ---
 
-## 📸 Preview
+## Preview
 
 *(Add screenshots or GIFs here)*
 
 ---
 
-## 💀 Why play?
+## Why play?
 
 Because slicing letters mid-air with perfect timing just feels ridiculously satisfying.
