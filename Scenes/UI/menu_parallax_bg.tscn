@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://d1vvw58phyda0"]
+
+[ext_resource type="Script" uid="uid://bo1ji1yy8dlu3" path="res://Scripts/UI/menu_parallax_bg.gd" id="1_s50a0"]
+[ext_resource type="Texture2D" uid="uid://dud3a5nbhsth4" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/1.png" id="1_uon0r"]
+[ext_resource type="Texture2D" uid="uid://di6rox6q8nr8i" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/2.png" id="2_s50a0"]
+[ext_resource type="Texture2D" uid="uid://d1csewd5rfh0r" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/3.png" id="3_13yie"]
+[ext_resource type="Texture2D" uid="uid://bf0rmw0r1txw0" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/4.png" id="4_3lwqc"]
+[ext_resource type="Texture2D" uid="uid://bars8ksueo78m" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 8/5.png" id="5_y2iip"]
+[ext_resource type="Texture2D" uid="uid://h5u2kjvf0pol" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/6.png" id="6_adtfl"]
+
+[node name="ParallaxBG" type="ParallaxBackground" unique_id=1011359252]
+layer = -10
+script = ExtResource("1_s50a0")
+
+[node name="SkyLayer" type="ParallaxLayer" parent="." unique_id=24380245]
+texture_repeat = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer" unique_id=1062625084]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("1_uon0r")
+
+[node name="SkyLayer2" type="ParallaxLayer" parent="." unique_id=767612333]
+texture_repeat = 2
+motion_scale = Vector2(0.15, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer2" unique_id=624904090]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("2_s50a0")
+
+[node name="SkyLayer3" type="ParallaxLayer" parent="." unique_id=375584053]
+texture_repeat = 2
+motion_scale = Vector2(0.01, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer3" unique_id=1810905226]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("3_13yie")
+
+[node name="SkyLayer4" type="ParallaxLayer" parent="." unique_id=1090974436]
+texture_repeat = 2
+motion_scale = Vector2(0.6, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer4" unique_id=1693595496]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("4_3lwqc")
+
+[node name="SkyLayer5" type="ParallaxLayer" parent="." unique_id=1067834925]
+texture_repeat = 2
+motion_scale = Vector2(0.95, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer5" unique_id=1946309451]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("5_y2iip")
+
+[node name="SkyLayer6" type="ParallaxLayer" parent="." unique_id=987643350]
+visible = false
+texture_repeat = 2
+motion_scale = Vector2(1.2, 0.01)
+motion_offset = Vector2(-864, 0)
+motion_mirroring = Vector2(1728, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SkyLayer6" unique_id=154502439]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(640, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("6_adtfl")

@@ -13,6 +13,7 @@ func _ready():
 	
 	sounds["score_up1"] = preload("res://Assets/Audio/SFX/score_up.wav")
 	sounds["score_up2"] = preload("res://Assets/Audio/SFX/score_up2.wav")
+	sounds["skin_select"] = preload("res://Assets/Audio/SFX/skin_select.wav")
 	
 	sounds["game_over"] = preload("res://Assets/Audio/SFX/game_over.wav")
 	sounds["interface_hover"] = preload("res://Assets/Audio/SFX/interface_hover.wav")

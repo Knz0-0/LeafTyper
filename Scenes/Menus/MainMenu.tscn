@@ -2,14 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d2hmtxfm4aif3" path="res://Scripts/UI/main_menu.gd" id="1_v3fht"]
 [ext_resource type="Script" uid="uid://do04rmms4h4ye" path="res://Scripts/UI/UIButton.gd" id="2_b42ut"]
-[ext_resource type="Texture2D" uid="uid://vv64bqytsstt" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 7/1.png" id="2_hqtmt"]
+[ext_resource type="PackedScene" uid="uid://d1vvw58phyda0" path="res://Scenes/UI/menu_parallax_bg.tscn" id="2_uv623"]
 [ext_resource type="Theme" uid="uid://lcbdvvqemx8r" path="res://Themes/default.tres" id="3_tfrft"]
-[ext_resource type="Texture2D" uid="uid://dud3a5nbhsth4" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/1.png" id="3_ts2fx"]
-[ext_resource type="Texture2D" uid="uid://di6rox6q8nr8i" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/2.png" id="4_8w8b8"]
-[ext_resource type="Texture2D" uid="uid://d1csewd5rfh0r" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/3.png" id="5_mb40c"]
-[ext_resource type="Texture2D" uid="uid://bf0rmw0r1txw0" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 4/4.png" id="6_mdbg0"]
-[ext_resource type="Texture2D" uid="uid://bars8ksueo78m" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 8/5.png" id="7_7r21k"]
-[ext_resource type="Texture2D" uid="uid://h5u2kjvf0pol" path="res://Assets/Sprites/free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 6/6.png" id="7_c638u"]
+[ext_resource type="SpriteFrames" uid="uid://dkrstic5bbtok" path="res://Assets/SpriteFrames/Samurai1_SpriteFrames.tres" id="11_8w8b8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b42ut"]
 font_size = 48
@@ -22,6 +17,8 @@ font_size = 48
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uv623"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8w8b8"]
+
 [node name="MainMenu" type="Control" unique_id=1237537697]
 layout_mode = 3
 anchors_preset = 15
@@ -31,95 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v3fht")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1240836281]
-visible = false
-z_index = -20
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_hqtmt")
-
-[node name="ParallaxBG" type="ParallaxBackground" parent="." unique_id=1123352209]
-layer = -10
-
-[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBG" unique_id=227655687]
-texture_repeat = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer" unique_id=1678111253]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(640, 360)
-scale = Vector2(3, 3)
-texture = ExtResource("3_ts2fx")
-
-[node name="SkyLayer2" type="ParallaxLayer" parent="ParallaxBG" unique_id=1354906747]
-texture_repeat = 2
-motion_scale = Vector2(0.15, 0.01)
-motion_offset = Vector2(-864, 0)
-motion_mirroring = Vector2(1728, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer2" unique_id=1692238409]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(640, 360)
-scale = Vector2(3, 3)
-texture = ExtResource("4_8w8b8")
-
-[node name="SkyLayer3" type="ParallaxLayer" parent="ParallaxBG" unique_id=1272035691]
-texture_repeat = 2
-motion_scale = Vector2(0.01, 0.01)
-motion_offset = Vector2(-864, 0)
-motion_mirroring = Vector2(1728, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer3" unique_id=222775687]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(640, 360)
-scale = Vector2(3, 3)
-texture = ExtResource("5_mb40c")
-
-[node name="SkyLayer4" type="ParallaxLayer" parent="ParallaxBG" unique_id=645047665]
-texture_repeat = 2
-motion_scale = Vector2(0.6, 0.01)
-motion_offset = Vector2(-864, 0)
-motion_mirroring = Vector2(1728, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer4" unique_id=214334519]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(640, 360)
-scale = Vector2(3, 3)
-texture = ExtResource("6_mdbg0")
-
-[node name="SkyLayer5" type="ParallaxLayer" parent="ParallaxBG" unique_id=1995926686]
-texture_repeat = 2
-motion_scale = Vector2(0.95, 0.01)
-motion_offset = Vector2(-864, 0)
-motion_mirroring = Vector2(1728, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer5" unique_id=1472764361]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(640, 360)
-scale = Vector2(3, 3)
-texture = ExtResource("7_7r21k")
-
-[node name="SkyLayer6" type="ParallaxLayer" parent="ParallaxBG" unique_id=190186223]
-visible = false
-texture_repeat = 2
-motion_scale = Vector2(1.2, 0.01)
-motion_offset = Vector2(-864, 0)
-motion_mirroring = Vector2(1728, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/SkyLayer6" unique_id=2116534031]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(640, 360)
-scale = Vector2(3, 3)
-texture = ExtResource("7_c638u")
+[node name="ParallaxBG" parent="." unique_id=1011359252 instance=ExtResource("2_uv623")]
 
 [node name="DarkOverlay" type="ColorRect" parent="." unique_id=1650720168]
 layout_mode = 1
@@ -190,19 +99,19 @@ script = ExtResource("2_b42ut")
 [node name="LeaderboardTitle" type="Label" parent="." unique_id=248812924]
 texture_filter = 1
 layout_mode = 0
-offset_left = 726.0
-offset_top = 267.0
-offset_right = 886.0
-offset_bottom = 290.0
+offset_left = 883.0
+offset_top = 256.0
+offset_right = 1043.0
+offset_bottom = 279.0
 text = "TOP SCORES"
 
 [node name="LeaderboardLabel" type="Label" parent="." unique_id=1349315883]
 texture_filter = 1
 layout_mode = 0
-offset_left = 722.0
-offset_top = 317.0
-offset_right = 1158.0
-offset_bottom = 419.0
+offset_left = 779.0
+offset_top = 313.0
+offset_right = 1215.0
+offset_bottom = 415.0
 
 [node name="CoinsLabel" type="Label" parent="." unique_id=1064066798]
 texture_filter = 1
@@ -217,3 +126,44 @@ offset_bottom = 42.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.9833146, 0.90597224, 0.5545178, 1)
 text = "RYO : 2450"
+
+[node name="PreviewContainer" type="Control" parent="." unique_id=846648877]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 122.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Preview" type="AnimatedSprite2D" parent="PreviewContainer" unique_id=1876781172]
+texture_filter = 1
+position = Vector2(113.99999, 41.999996)
+scale = Vector2(10, 10)
+sprite_frames = ExtResource("11_8w8b8")
+animation = &"idle"
+
+[node name="Label" type="Label" parent="PreviewContainer" unique_id=625883832]
+texture_filter = 1
+layout_mode = 0
+offset_left = 72.0
+offset_top = 407.0
+offset_right = 152.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 20
+text = "SKIN"
+
+[node name="Button" type="Button" parent="PreviewContainer" unique_id=1125071818]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8w8b8")

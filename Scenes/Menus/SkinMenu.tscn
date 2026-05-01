@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://yvy4v4gtyhf5"]
+
+[ext_resource type="Script" uid="uid://gohsqjwav2w4" path="res://Scripts/UI/skin_menu.gd" id="1_jg5u2"]
+[ext_resource type="PackedScene" uid="uid://d1vvw58phyda0" path="res://Scenes/UI/menu_parallax_bg.tscn" id="2_qn1k3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qn1k3"]
+
+[node name="SkinMenu" type="Control" unique_id=1732426356]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jg5u2")
+
+[node name="ParallaxBG" parent="." unique_id=1011359252 instance=ExtResource("2_qn1k3")]
+
+[node name="Label" type="Label" parent="." unique_id=1890588652]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 47.0
+offset_right = 40.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "SKINS"
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=449112439]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 100.0
+offset_bottom = 600.0
+grow_horizontal = 2
+columns = 3
+
+[node name="BackButton" type="Button" parent="." unique_id=924706660]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 223.0
+offset_bottom = 69.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qn1k3")
+text = "BACK"
+
+[node name="CoinsLabel" type="Label" parent="." unique_id=839366887]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_top = 26.0
+offset_right = -26.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.9833146, 0.90597224, 0.5545178, 1)
+text = "RYO : 2450"

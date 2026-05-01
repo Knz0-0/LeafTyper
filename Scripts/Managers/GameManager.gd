@@ -5,8 +5,22 @@ var leaderboard : Array = []
 
 var coins := 0
 var coins_before_run := 0
-var unlocked_skins = ["Samurai3"]
-var equipped_skin = "WolfSamurai"
+var unlocked_skins = ["Samurai1"]
+var equipped_skin = "Samurai1"
+
+var skins_data = {
+	"Samurai1": { "cost": 0 },
+	"Samurai2": { "cost": 500 },
+	"Samurai3": { "cost": 1000 },
+	"Samurai4": { "cost": 1500 },
+	"Samurai5": { "cost": 2000 },
+	"Samurai6": { "cost": 2500 },
+	"WolfSamurai": { "cost": 3000 },
+	"ArcherSamurai": { "cost": 3500 },
+	"DemonSamurai": { "cost": 4000 },
+	"ExecutionerSamurai": { "cost": 4500 },
+	"PandaSamurai": { "cost": 5000 }
+}
 
 
 const SAVE_PATH = "user://save.json"
@@ -109,3 +123,30 @@ func delete_save():
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
 	load_data()
+	
+
+func go_to_skins():
+	await TransitionManager.play_transition()
+	get_tree().change_scene_to_file("res://Scenes/Menus/SkinMenu.tscn")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await TransitionManager.fade_back_in()
+	
+func buy_skin(name:String):
+	if name in unlocked_skins:
+		return true
+
+	var cost = skins_data[name]["cost"]
+
+	if coins >= cost:
+		coins -= cost
+		unlocked_skins.append(name)
+		save_data()
+		return true
+
+	return false
+	
+func equip_skin(name:String):
+	if name in unlocked_skins:
+		equipped_skin = name
+		save_data()
