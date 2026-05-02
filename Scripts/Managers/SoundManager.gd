@@ -26,9 +26,16 @@ func play_sfx(name:String, volume_db := -8.0, pitch_bonus := 0.0):
 	add_child(player)
 
 	player.stream = sounds[name]
+	player.bus = "SFX"
 	player.volume_db = volume_db
 	player.pitch_scale = randf_range(0.98, 1.02) + pitch_bonus
 
 	player.finished.connect(player.queue_free)
 
 	player.play()
+
+func set_sfx_volume(value):
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("SFX"),
+		linear_to_db(value)
+	)

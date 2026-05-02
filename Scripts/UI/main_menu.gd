@@ -35,6 +35,10 @@ func _ready():
 	quit_button.pressed.connect(_on_quit_pressed)
 	skin_button.pressed.connect(_on_preview_pressed)
 	
+	skin_button.mouse_entered.connect(func():
+		SoundManager.play_sfx("interface_hover")
+	)
+	
 
 
 func update_leaderboard():
@@ -55,11 +59,11 @@ func _on_play_pressed():
 
 func _on_settings_pressed():
 	SoundManager.play_sfx("clash")
-	print("Settings later")
+	GameManager.go_to_settings()
 
 func _on_credits_pressed():
 	SoundManager.play_sfx("clash")
-	print("Made by Kenzo the last-minute legend")
+	GameManager.go_to_credits()
 
 func _on_quit_pressed():
 	SoundManager.play_sfx("clash")

@@ -10,7 +10,7 @@ func _ready():
 	player = AudioStreamPlayer.new()
 	add_child(player)
 
-	player.bus = "Master"
+	player.bus = "Music"
 	player.volume_db = -25
 	player.stream = menu_music
 	player.play()
@@ -71,3 +71,8 @@ func fade_in_music():
 		var t = timer / duration
 		player.volume_db = lerp(-40.0, -10.0, t)
 	
+func set_music_volume(value):
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Music"),
+		linear_to_db(value)
+	)

@@ -24,6 +24,11 @@ var skins_data = {
 
 const SAVE_PATH = "user://save.json"
 
+var music_volume := 0.8
+var sfx_volume := 0.8
+var fullscreen := false
+var flash_enabled := true
+
 func _ready():
 	load_data()
 	equipped_skin = "Samurai1"
@@ -45,6 +50,20 @@ func start_game():
 func return_to_menu():
 	await TransitionManager.play_transition()
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await TransitionManager.fade_back_in()
+
+func go_to_credits():
+	await TransitionManager.play_transition()
+	get_tree().change_scene_to_file("res://Scenes/Menus/Credits.tscn")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await TransitionManager.fade_back_in()
+	
+func go_to_settings():
+	await TransitionManager.play_transition()
+	get_tree().change_scene_to_file("res://Scenes/Menus/SettingsMenu.tscn")
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await TransitionManager.fade_back_in()
@@ -77,7 +96,11 @@ func save_data():
 		"leaderboard": leaderboard,
 		"coins": coins,
 		"unlocked_skins": unlocked_skins,
-		"equipped_skin": equipped_skin
+		"equipped_skin": equipped_skin,
+		"music_volume": music_volume,
+		"sfx_volume": sfx_volume,
+		"fullscreen": fullscreen,
+		"flash_enabled": flash_enabled
 	}
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -107,11 +130,25 @@ func load_data():
 			coins = result.get("coins", 0)
 			unlocked_skins = result.get("unlocked_skins", ["Samurai1"])
 			equipped_skin = result.get("equipped_skin", "Samurai1")
+			music_volume = result.get("music_volume", 0.8)
+			sfx_volume = result.get("sfx_volume", 0.8)
+			fullscreen = result.get("fullscreen", false)
+			flash_enabled = result.get("flash_enabled", true)
 		else:
 			leaderboard = []
 			coins = 0
 			unlocked_skins = ["Samurai1"]
 			equipped_skin = "Samurai1"
+			music_volume = 0.8
+			sfx_volume = 0.8
+			fullscreen = false
+			flash_enabled = false
+			
+		SoundManager.set_sfx_volume(sfx_volume)
+		MusicManager.set_music_volume(music_volume)
+		if fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		
 			
 func reward_coins_from_run():
 	coins_before_run = coins
@@ -149,3 +186,16 @@ func equip_skin(name:String):
 	if name in unlocked_skins:
 		equipped_skin = name
 		save_data()
+
+
+func _input(event):
+	if event.is_action_pressed("toggle_fullscreen"):
+		toggle_fullscreen()
+		
+func toggle_fullscreen():
+	fullscreen = !fullscreen
+	
+	if fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

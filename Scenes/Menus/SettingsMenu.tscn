@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bck3bdkug3bp"]
+
+[ext_resource type="PackedScene" uid="uid://d1vvw58phyda0" path="res://Scenes/UI/menu_parallax_bg.tscn" id="1_enyfb"]
+[ext_resource type="Script" uid="uid://ddumk0xijn6qb" path="res://Scripts/UI/settings_menu.gd" id="1_gl23i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl23i"]
+
+[node name="SettingsMenu" type="Control" unique_id=2115607713]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gl23i")
+
+[node name="ParallaxBG" parent="." unique_id=1011359252 instance=ExtResource("1_enyfb")]
+
+[node name="Label" type="Label" parent="." unique_id=1808958196]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 47.0
+offset_right = 120.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1658668004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=189458208]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="Label" type="Label" parent="CenterContainer/GridContainer" unique_id=1925826775]
+layout_mode = 2
+text = "MUSIC VOLUME"
+horizontal_alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/GridContainer" unique_id=1635859046]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Label2" type="Label" parent="CenterContainer/GridContainer" unique_id=73558207]
+layout_mode = 2
+text = "SFX VOLUME"
+horizontal_alignment = 2
+
+[node name="SFXSlider" type="HSlider" parent="CenterContainer/GridContainer" unique_id=512928198]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Label3" type="Label" parent="CenterContainer/GridContainer" unique_id=1317790040]
+layout_mode = 2
+text = "FULLSCREEN"
+horizontal_alignment = 2
+
+[node name="FullscreenCheck" type="CheckBox" parent="CenterContainer/GridContainer" unique_id=2111397414]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CenterContainer/GridContainer" unique_id=1942300625]
+layout_mode = 2
+text = "FLASH EFFECTS"
+horizontal_alignment = 2
+
+[node name="FlashCheck" type="CheckBox" parent="CenterContainer/GridContainer" unique_id=364621666]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="." unique_id=616768840]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 223.0
+offset_bottom = 69.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gl23i")
+text = "BACK"

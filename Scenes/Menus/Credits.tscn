@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://cr0jncsuvsn4"]
+
+[ext_resource type="Script" uid="uid://0q4nnxl88cpp" path="res://Scripts/UI/credits.gd" id="1_da514"]
+[ext_resource type="PackedScene" uid="uid://d1vvw58phyda0" path="res://Scenes/UI/menu_parallax_bg.tscn" id="1_h41mv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s3uxa"]
+
+[node name="Credits" type="Control" unique_id=1787516051]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_da514")
+
+[node name="ParallaxBG" parent="." unique_id=1011359252 instance=ExtResource("1_h41mv")]
+
+[node name="CreditsText" type="RichTextLabel" parent="." unique_id=337921357]
+texture_filter = 1
+layout_mode = 0
+offset_top = 35.0
+offset_right = 1280.0
+offset_bottom = 35.0
+bbcode_enabled = true
+text = "[center][font_size=52][b]LEAF TYPER[/b][/font_size][/center]
+
+
+
+[center][font_size=36][b]CREDITS[/b][/font_size][/center]
+
+
+
+[center][font_size=24]
+[b]Game Design & Development[/b]
+
+Kenzo Rufflet--Ejiri
+
+
+
+[b]Programming[/b]
+
+Kenzo Rufflet--Ejiri
+
+
+
+[b]Testing[/b]
+
+Eddy Francou
+
+
+
+
+[b]Art & Visual Assets[/b]
+
+Character Sprites  
+Samurai Bundle (2D Pixel Art)  
+by Mattz Art  
+
+
+Backgrounds  
+Free Sky with Clouds Pixel Art Set  
+by CraftPix  
+
+
+Leaf Effects  
+Falling Leaf FX  
+by EdgeLoopRepeat  
+
+
+
+
+[b]Audio & Sound Design[/b]
+
+Sound effects and music sourced from Pixabay  
+https://pixabay.com/
+
+
+
+[b]Engine & Technology[/b]
+
+Developed using Godot Engine  
+GDScript programming language
+
+
+
+[b]Special Thanks[/b]
+
+To everyone who tested the game,
+gave feedback, or simply played it <3
+
+
+
+[b]Final Note[/b]
+
+Keep the rhythm.
+
+
+
+Thank you for playing.
+[/font_size][/center]"
+scroll_active = false
+
+[node name="BackButton" type="Button" parent="." unique_id=185144051]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 39.0
+offset_right = 223.0
+offset_bottom = 89.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s3uxa")
+text = "BACK"

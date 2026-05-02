@@ -38,7 +38,7 @@ anchor_right = 0.5
 offset_top = 100.0
 offset_bottom = 600.0
 grow_horizontal = 2
-columns = 3
+columns = 5
 
 [node name="BackButton" type="Button" parent="." unique_id=924706660]
 texture_filter = 1
